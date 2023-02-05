@@ -1,4 +1,7 @@
-import * as React from "react"
+import * as React from "react";
+import "@fontsource/dm-sans";
+import "@fontsource/poppins";
+
 import {
   ChakraProvider,
   Box,
@@ -8,31 +11,18 @@ import {
   Code,
   Grid,
   theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+} from "@chakra-ui/react";
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { Logo } from "./Logo";
+import Navbar from "./components/navbar/Navbar";
+import Card from "./components/feed/Card";
+import { appMargin } from "./utils/consts";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
+    <Box bgColor="#F6F7F7" h="100vh" paddingX={appMargin}>
+      <Navbar />
+      <Card />
     </Box>
   </ChakraProvider>
-)
+);
