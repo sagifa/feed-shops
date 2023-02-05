@@ -8,7 +8,7 @@ const AppStyle: FlexProps = {
   direction: "column",
   alignItems: "center",
   bgColor: colors.appBackground,
-  w: "1440px",
+  w: "100%",
 };
 
 const Main = () => {

@@ -8,7 +8,7 @@ import Divider from "./Divider";
 import Buttons from "./Buttons";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { texts } from "../../utils/consts";
+import { loadPerScroll, texts, urlApi } from "../../utils/consts";
 
 type serverData = {
   id: string;
@@ -25,9 +25,6 @@ type serverData = {
   didLike: boolean;
   premium: boolean;
 }[];
-
-const loadPerScroll = 6;
-const urlApi = "https://dev.tedooo.com/feed.json";
 
 const Card = () => {
   const [serverData, setServerData] = useState<serverData>([]);
@@ -60,27 +57,30 @@ const Card = () => {
   if (!isLoading && !feeds.length) return <p>{texts.noData}</p>;
 
   return (
-    <InfiniteScroll
-      dataLength={feeds?.length}
-      next={fetchMoreData}
-      hasMore={feeds.length < serverData.length}
-      loader={<h4>{texts.loading}</h4>}
-      endMessage={
-        <p style={{ textAlign: "center" }}>
-          <b>{texts.endScroll}</b>
-        </p>
-      }
-    >
-      {feeds?.map((feed) => (
-        <Flex key={feed.id} {...CardWrapperStyle}>
-          <Header {...feed} />
-          <Images {...feed} />
-          <Summary {...feed} />
-          <Divider />
-          <Buttons />
-        </Flex>
-      ))}
-    </InfiniteScroll>
+    <div id="scrollableDiv" style={{ height: "100%", overflow: "" }}>
+      <InfiniteScroll
+        dataLength={feeds?.length}
+        next={fetchMoreData}
+        hasMore={feeds.length < serverData.length}
+        loader={<h4>{texts.loading}</h4>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>{texts.endScroll}</b>
+          </p>
+        }
+        scrollableTarget="scrollableDiv"
+      >
+        {feeds?.map((feed) => (
+          <Flex key={feed.id} {...CardWrapperStyle}>
+            <Header {...feed} />
+            <Images {...feed} />
+            <Summary {...feed} />
+            <Divider />
+            <Buttons />
+          </Flex>
+        ))}
+      </InfiniteScroll>
+    </div>
   );
 };
 

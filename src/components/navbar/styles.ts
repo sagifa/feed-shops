@@ -6,10 +6,10 @@ import {
   InputProps,
   TextProps,
 } from "@chakra-ui/react";
-import { appMargin, colors } from "../../utils/consts";
+import { appMargin, appWidth, colors } from "../../utils/consts";
 
 export const NavbarWrapperStyle: FlexProps = {
-  w: "full",
+  w: appWidth,
   height: "58px",
   bgColor: "white",
   alignItems: "center",
@@ -31,6 +31,7 @@ export const NavSearchInputStyle: InputProps = {
   w: "216px",
   h: "40px",
   background: "#F4F5F5",
+  color: colors.navDefault,
   _placeholder: {
     fontFamily: "DM Sans",
     fontSize: "sm",

@@ -8,7 +8,7 @@ import { cardWidth, colors } from "../../utils/consts";
 
 export const CardWrapperStyle: FlexProps = {
   w: cardWidth,
-  h: "753px",
+  // h: "753px",
   gap: "16px",
   paddingTop: "24px",
   bgColor: "white",
