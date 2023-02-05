@@ -6,6 +6,7 @@ export const colors = {
   appBackground: "#F6F7F7",
   lightGray: "#737877",
   lightBlue: "#0A66C2",
+  buttonTextColor: "#484E4C",
 };
 
 export const routeList = {

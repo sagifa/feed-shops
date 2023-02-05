@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/react";
-import { CardWrapperStyle } from "./styles";
+import { ButtonsWrapperStyle, CardWrapperStyle } from "./styles";
 import Header from "./Header";
 import Images from "./Images";
 import Summary from "./Summary";
 import Divider from "./Divider";
-import Buttons from "./Buttons";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { loadPerScroll, texts } from "../../utils/consts";
 import api from "../../services/api";
+import ButtonClickAble from "./ButtonClickAble";
+import { LikeIcon } from "../../images/likeIcon";
+import { CommentIcon } from "../../images/commentIcon";
+import ButtonRegular from "./ButtonRegular";
 
 type serverData = {
   id: string;
@@ -74,7 +77,10 @@ const Card = () => {
           <Images {...feed} />
           <Summary {...feed} />
           <Divider />
-          <Buttons />
+          <Flex {...ButtonsWrapperStyle}>
+            <ButtonClickAble icon={LikeIcon} text={texts.like} />
+            <ButtonRegular icon={CommentIcon} text={texts.comment} />
+          </Flex>
         </Flex>
       ))}
     </InfiniteScroll>
