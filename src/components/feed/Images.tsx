@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 import { ImagesWrapperStyle } from "./styles";
 
 type ImagesProps = {
@@ -16,7 +16,7 @@ const Images = ({ images }: ImagesProps) => {
             <Image src={image} objectFit="fill" />
           </Flex>
         ) : (
-          <Flex key={index} justifyContent="center" px="0px">
+          <Flex key={index} justifyContent="center" gap="8px">
             <Image src={image} objectFit="cover" />
           </Flex>
         )

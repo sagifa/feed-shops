@@ -17,6 +17,7 @@ export const ButtonsWrapperStyle: FlexProps = {
   gap: "307px",
   w: "full",
   h: "40px",
+  pb: "16px",
 };
 export const ButtonsStyle: ButtonProps = {
   bgColor: "unset",

@@ -7,6 +7,7 @@ import {
 import { appMargin } from "../../utils/consts";
 
 export const NavbarWrapperStyle: FlexProps = {
+  w: "full",
   height: "58px",
   bgColor: "white",
   alignItems: "center",

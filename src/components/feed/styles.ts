@@ -1,10 +1,8 @@
 import { FlexProps, TextProps } from "@chakra-ui/react";
-import { appMargin } from "../../utils/consts";
 
 export const CardWrapperStyle: FlexProps = {
   w: "1120px",
-  // h: "753px",
-  h: "785px",
+  h: "753px",
   gap: "16px",
   paddingTop: "24px",
   bgColor: "white",
@@ -13,7 +11,7 @@ export const CardWrapperStyle: FlexProps = {
   direction: "column",
   mb: "24px",
   alignItems: "center",
-  // px: appMargin,
+  // paddingX: appMargin,
 };
 
 export const CardIntroStyle: FlexProps = {
