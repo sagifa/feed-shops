@@ -32,7 +32,7 @@ const Header = ({ avatar, shopName, username, text, date }: HeaderProps) => {
   return (
     <Flex {...CardIntroStyle}>
       <Flex {...CardHeaderStyle}>
-        <Image src={avatar} boxSize="40px" />
+        <Image src={avatar} boxSize="40px" rounded="full" />
         <Flex direction="column">
           <Text {...TextDefaultStyle} {...ShopNameStyle}>
             {shopName}
