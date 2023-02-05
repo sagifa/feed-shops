@@ -6,6 +6,7 @@ export const colors = {
   appBackground: "#F6F7F7",
   lightGray: "#737877",
   lightBlue: "#0A66C2",
+  buttonTextColor: "#484E4C",
 };
 
 export const routeList = {
@@ -22,8 +23,15 @@ export const texts = {
   comments: "Comments",
   like: "Like",
   comment: "Comment",
+  privacy: "Privacy",
+  settings: "Settings",
+  logout: "Logout",
 };
 
 export const cardWidth = "1120px";
 
 export const appWidth = "1440px";
+
+export const loadPerScroll = 6;
+
+export const urlApi = "https://dev.tedooo.com/feed.json";

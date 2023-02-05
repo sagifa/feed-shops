@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/react";
-import { CardWrapperStyle } from "./styles";
+import { ButtonsWrapperStyle, CardWrapperStyle } from "./styles";
 import Header from "./Header";
 import Images from "./Images";
 import Summary from "./Summary";
 import Divider from "./Divider";
-import Buttons from "./Buttons";
-import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { texts } from "../../utils/consts";
+import { loadPerScroll, texts } from "../../utils/consts";
+import api from "../../services/api";
+import ButtonClickAble from "./ButtonClickAble";
+import { LikeIcon } from "../../images/likeIcon";
+import { CommentIcon } from "../../images/commentIcon";
+import ButtonRegular from "./ButtonRegular";
 
 type serverData = {
   id: string;
@@ -26,22 +29,18 @@ type serverData = {
   premium: boolean;
 }[];
 
-const loadPerScroll = 6;
-const urlApi = "https://dev.tedooo.com/feed.json";
-
 const Card = () => {
   const [serverData, setServerData] = useState<serverData>([]);
   const [feeds, setFeeds] = useState<serverData>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(feeds);
   useEffect(() => {
     fetchDataServer();
   }, []);
 
   const fetchDataServer = () => {
-    axios
-      .get(urlApi)
+    api
+      .fetchFeeds()
       .then((response) => {
         setServerData(response.data.data);
         setFeeds(response.data.data.slice(0, loadPerScroll));
@@ -57,6 +56,7 @@ const Card = () => {
   };
 
   if (isLoading) return <p>{texts.loading}</p>;
+
   if (!isLoading && !feeds.length) return <p>{texts.noData}</p>;
 
   return (
@@ -77,7 +77,10 @@ const Card = () => {
           <Images {...feed} />
           <Summary {...feed} />
           <Divider />
-          <Buttons />
+          <Flex {...ButtonsWrapperStyle}>
+            <ButtonClickAble icon={LikeIcon} text={texts.like} />
+            <ButtonRegular icon={CommentIcon} text={texts.comment} />
+          </Flex>
         </Flex>
       ))}
     </InfiniteScroll>
