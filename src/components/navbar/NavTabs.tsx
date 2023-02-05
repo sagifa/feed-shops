@@ -1,22 +1,17 @@
 import React, { useState } from "react";
-import { MessageIcon } from "../../images/messageIcon";
-import { NotificationIcon } from "../../images/notificationIcon";
-import { HomeIcon } from "../../images/homeIcon";
-import { Flex, Button, Icon, Text } from "@chakra-ui/react";
+import { Flex, Button, Icon, Text, IconProps } from "@chakra-ui/react";
 import { TabButtonStyle, TabTextStyle, TabWrapperStyle } from "./styles";
-import { colors, routeList } from "../../utils/consts";
+import { colors } from "../../utils/consts";
 
-const buttonsList = [
-  { icon: HomeIcon, text: "Home", url: routeList.home },
-  { icon: MessageIcon, text: "Messaging", url: routeList.messages },
-  {
-    icon: NotificationIcon,
-    text: "Notifications",
-    url: routeList.notifications,
-  },
-];
+type NavTabsProps = {
+  buttonsList: {
+    icon: (props: IconProps) => JSX.Element;
+    text: string;
+    url: string;
+  }[];
+};
 
-const NavTabs = () => {
+const NavTabs = ({ buttonsList }: NavTabsProps) => {
   const [checked, setChecked] = useState("");
 
   return (

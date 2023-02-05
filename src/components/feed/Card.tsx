@@ -6,9 +6,9 @@ import Images from "./Images";
 import Summary from "./Summary";
 import Divider from "./Divider";
 import Buttons from "./Buttons";
-import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { loadPerScroll, texts, urlApi } from "../../utils/consts";
+import { loadPerScroll, texts } from "../../utils/consts";
+import api from "../../services/api";
 
 type serverData = {
   id: string;
@@ -31,14 +31,13 @@ const Card = () => {
   const [feeds, setFeeds] = useState<serverData>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(feeds);
   useEffect(() => {
     fetchDataServer();
   }, []);
 
   const fetchDataServer = () => {
-    axios
-      .get(urlApi)
+    api
+      .fetchFeeds()
       .then((response) => {
         setServerData(response.data.data);
         setFeeds(response.data.data.slice(0, loadPerScroll));
@@ -54,33 +53,31 @@ const Card = () => {
   };
 
   if (isLoading) return <p>{texts.loading}</p>;
+
   if (!isLoading && !feeds.length) return <p>{texts.noData}</p>;
 
   return (
-    <div id="scrollableDiv" style={{ height: "100%", overflow: "" }}>
-      <InfiniteScroll
-        dataLength={feeds?.length}
-        next={fetchMoreData}
-        hasMore={feeds.length < serverData.length}
-        loader={<h4>{texts.loading}</h4>}
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>{texts.endScroll}</b>
-          </p>
-        }
-        scrollableTarget="scrollableDiv"
-      >
-        {feeds?.map((feed) => (
-          <Flex key={feed.id} {...CardWrapperStyle}>
-            <Header {...feed} />
-            <Images {...feed} />
-            <Summary {...feed} />
-            <Divider />
-            <Buttons />
-          </Flex>
-        ))}
-      </InfiniteScroll>
-    </div>
+    <InfiniteScroll
+      dataLength={feeds?.length}
+      next={fetchMoreData}
+      hasMore={feeds.length < serverData.length}
+      loader={<h4>{texts.loading}</h4>}
+      endMessage={
+        <p style={{ textAlign: "center" }}>
+          <b>{texts.endScroll}</b>
+        </p>
+      }
+    >
+      {feeds?.map((feed) => (
+        <Flex key={feed.id} {...CardWrapperStyle}>
+          <Header {...feed} />
+          <Images {...feed} />
+          <Summary {...feed} />
+          <Divider />
+          <Buttons />
+        </Flex>
+      ))}
+    </InfiniteScroll>
   );
 };
 
