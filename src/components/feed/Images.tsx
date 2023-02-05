@@ -11,7 +11,7 @@ const imagesToShow = 2;
 const gap = 8;
 const widthMultiImages =
   +cardWidth.replace(/[^0-9]/g, "") / imagesToShow -
-  gap +
+  gap * (imagesToShow - 1) +
   imagesToShow * imagesToShow +
   "px";
 
