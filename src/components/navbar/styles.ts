@@ -1,17 +1,45 @@
 import {
   ButtonProps,
   FlexProps,
+  IconProps,
   ImageProps,
+  InputProps,
   TextProps,
 } from "@chakra-ui/react";
+import { appMargin, colors } from "../../utils/consts";
 
 export const NavbarWrapperStyle: FlexProps = {
+  w: "full",
   height: "58px",
   bgColor: "white",
   alignItems: "center",
   justifyContent: "space-between",
+  px: appMargin,
+  mb: "24px",
 };
 
+export const NavSearchIconStyle: IconProps = {
+  mr: "-18px",
+  mb: "-2px",
+  boxSize: "18px",
+};
+
+export const NavSearchInputStyle: InputProps = {
+  type: "text",
+  placeholder: "Search",
+  borderRadius: "32px",
+  w: "216px",
+  h: "40px",
+  background: "#F4F5F5",
+  _placeholder: {
+    fontFamily: "DM Sans",
+    fontSize: "sm",
+    fontWeight: "400",
+    lineHeight: "18px",
+    color: colors.navDefault,
+    letterSpacing: "-0.158333px",
+  },
+};
 export const LogoSearchWrapperStyle: FlexProps = {
   w: "268px",
   h: "40px",

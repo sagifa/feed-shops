@@ -1,50 +1,34 @@
-import {
-  Button,
-  ButtonProps,
-  Flex,
-  Icon,
-  Text,
-  TextProps,
-} from "@chakra-ui/react";
 import React, { useState } from "react";
+import { Button, Flex, Icon, Text } from "@chakra-ui/react";
 import { CommentIcon } from "../../images/commentIcon";
 import { LikeIcon } from "../../images/likeIcon";
+import { colors, texts } from "../../utils/consts";
+import { ButtonsWrapperStyle, ButtonsStyle, TextButtonStyle } from "./styles";
 
-export const ButtonsStyle: ButtonProps = {
-  bgColor: "unset",
-  _hover: { bgColor: "unset" },
-};
-
-export const TextButtonStyle: TextProps = {
-  fontFamily: "DM Sans",
-  fontStyle: "normal",
-  fontWeight: "500",
-  fontSize: "14px",
-  lineHeight: "22px",
-  ml: "9.5px",
-};
-const iconColor = "#737877";
 const textColor = "#484E4C";
-const clickedColor = "#0A66C2";
 
 const Buttons = () => {
   const [isClick, setIsClick] = useState(false);
+
   return (
-    <Flex justifyContent="space-evenly">
+    <Flex {...ButtonsWrapperStyle}>
       <Button {...ButtonsStyle} onClick={() => setIsClick(!isClick)}>
         <Icon
           as={LikeIcon}
           boxSize="15px"
-          color={isClick ? clickedColor : iconColor}
+          color={isClick ? colors.lightBlue : colors.lightGray}
         />
-        <Text {...TextButtonStyle} color={isClick ? clickedColor : textColor}>
-          Like
+        <Text
+          {...TextButtonStyle}
+          color={isClick ? colors.lightBlue : textColor}
+        >
+          {texts.like}
         </Text>
       </Button>
       <Button {...ButtonsStyle}>
-        <Icon as={CommentIcon} boxSize="15px" color={iconColor} />
+        <Icon as={CommentIcon} boxSize="15px" color={colors.lightGray} />
         <Text {...TextButtonStyle} color={textColor}>
-          Comment
+          {texts.comment}
         </Text>
       </Button>
     </Flex>

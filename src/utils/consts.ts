@@ -1,8 +1,11 @@
 export const appMargin = "160px";
 
 export const colors = {
-  selectedColor: "#2DB8A1",
-  defaultColor: "#949796",
+  navSelected: "#2DB8A1",
+  navDefault: "#949796",
+  appBackground: "#F6F7F7",
+  lightGray: "#737877",
+  lightBlue: "#0A66C2",
 };
 
 export const routeList = {
@@ -10,3 +13,17 @@ export const routeList = {
   messages: "/inbox",
   notifications: "/notification",
 };
+
+export const texts = {
+  loading: "Loading...",
+  noData: "No feed available right now, We will be back soon :)",
+  endScroll: "Yay! You have seen it all",
+  likes: "Likes",
+  comments: "Comments",
+  like: "Like",
+  comment: "Comment",
+};
+
+export const cardWidth = "1120px";
+
+export const appWidth = "1440px";

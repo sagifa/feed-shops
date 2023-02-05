@@ -3,7 +3,6 @@ import { Flex, Image } from "@chakra-ui/react";
 import Logo from "../../images/logo.svg";
 import ProfileImage from "../../images/avatar.svg";
 import NavTabs from "./NavTabs";
-
 import NavSearch from "./NavSearch";
 import {
   LogoSearchWrapperStyle,
