@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Flex } from "@chakra-ui/react";
+import React, { useEffect, useState, useRef } from "react";
+import { Flex } from "@chakra-ui/react";
 import { CardWrapperStyle } from "./styles";
 import Header from "./Header";
 import Images from "./Images";
@@ -25,14 +25,12 @@ type serverData = {
   premium: boolean;
 }[];
 
+const loadPerScroll = 6;
+const urlApi = "https://dev.tedooo.com/feed.json";
+
 const Card = () => {
   const [serverData, setServerData] = useState<serverData>([]);
   const [feeds, setFeeds] = useState<serverData>([]);
-
-  console.log("A", serverData);
-  console.log("B", feeds);
-  const loadPerScroll = 6;
-  let loadedAmount = 0;
 
   useEffect(() => {
     fetchDataServer();
@@ -40,19 +38,21 @@ const Card = () => {
 
   const fetchDataServer = () => {
     axios
-      .get("https://dev.tedooo.com/feed.json")
+      .get(urlApi)
       .then((response) => {
         setServerData(response.data.data);
-        setFeeds(response.data.data.slice(0, loadPerScroll));
+        setFeeds(response.data.data.slice(0, loadPerScroll + 1));
       })
       .catch((error) => {
         console.error("There was an error!", error);
       });
   };
   const fetchMoreData = () => {
-    setFeeds(serverData.splice(0, feeds.length + loadPerScroll));
+    setFeeds(serverData.splice(0, feeds.length + loadPerScroll + 1));
   };
+
   if (!feeds.length) return <p>Loading...</p>;
+
   return (
     <>
       <InfiniteScroll
