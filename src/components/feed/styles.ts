@@ -1,16 +1,19 @@
 import { FlexProps, TextProps } from "@chakra-ui/react";
+import { appMargin } from "../../utils/consts";
 
 export const CardWrapperStyle: FlexProps = {
   w: "1120px",
-  h: "753px",
+  // h: "753px",
+  h: "785px",
   gap: "16px",
   paddingTop: "24px",
   bgColor: "white",
   boxShadow: "0px 1px 7px rgba(40, 47, 45, 0.07)",
   borderRadius: "4px",
   direction: "column",
-  mt: "24px",
+  mb: "24px",
   alignItems: "center",
+  // px: appMargin,
 };
 
 export const CardIntroStyle: FlexProps = {
@@ -45,13 +48,12 @@ export const DescriptionStyle: TextProps = {
 };
 
 export const ImagesWrapperStyle: FlexProps = {
-  justifyContent: "center",
-  padding: "0px 111px",
-  gap: "8px",
+  // justifyContent: "center",
+  // padding: "0px 111px",
+  // gap: "8px",
   width: "1120px,",
   height: "517px",
-  background: "#B8C248",
-  px: 0,
+  bgColor: "#B8C248",
 };
 
 export const TextDefaultStyle: TextProps = {

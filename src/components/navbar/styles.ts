@@ -4,12 +4,15 @@ import {
   ImageProps,
   TextProps,
 } from "@chakra-ui/react";
+import { appMargin } from "../../utils/consts";
 
 export const NavbarWrapperStyle: FlexProps = {
   height: "58px",
   bgColor: "white",
   alignItems: "center",
   justifyContent: "space-between",
+  px: appMargin,
+  mb: "24px",
 };
 
 export const LogoSearchWrapperStyle: FlexProps = {

@@ -9,25 +9,26 @@ import {
   CardIntroStyle,
   TextDefaultStyle,
 } from "./styles";
-import TimeAgo from "javascript-time-ago";
-
-// English.
+import TimeAgo, { DateInput } from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-
 TimeAgo.addDefaultLocale(en);
 
-// Create formatter (English).
-const timeAgo = new TimeAgo("en-US");
-const ago = timeAgo.format(new Date(), "mini");
-console.log({ ago });
+const formatTimeAgo = (date: DateInput) => {
+  const timeAgo = new TimeAgo("en-US");
+  const ago = timeAgo.format(date, "mini");
+  return ago;
+};
 
 type HeaderProps = {
   avatar: string;
   shopName: string;
   username: string;
   text: string;
+  date: string;
 };
-const Header = ({ avatar, shopName, username, text }: HeaderProps) => {
+const Header = ({ avatar, shopName, username, text, date }: HeaderProps) => {
+  const timeAgo = formatTimeAgo(new Date(date));
+
   return (
     <Flex {...CardIntroStyle}>
       <Flex {...CardHeaderStyle}>
@@ -43,7 +44,7 @@ const Header = ({ avatar, shopName, username, text }: HeaderProps) => {
             color={colors.defaultColor}
             href="#x"
           >
-            <Link color="#0A66C2">{username}</Link> • 1h
+            <Link color="#0A66C2">{username}</Link> • {timeAgo}
           </Text>
         </Flex>
       </Flex>

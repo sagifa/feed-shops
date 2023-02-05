@@ -2,6 +2,7 @@ import {
   Button,
   ButtonProps,
   Flex,
+  FlexProps,
   Icon,
   Text,
   TextProps,
@@ -10,6 +11,13 @@ import React, { useState } from "react";
 import { CommentIcon } from "../../images/commentIcon";
 import { LikeIcon } from "../../images/likeIcon";
 
+export const ButtonsWrapperStyle: FlexProps = {
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "307px",
+  w: "full",
+  h: "40px",
+};
 export const ButtonsStyle: ButtonProps = {
   bgColor: "unset",
   _hover: { bgColor: "unset" },
@@ -30,7 +38,7 @@ const clickedColor = "#0A66C2";
 const Buttons = () => {
   const [isClick, setIsClick] = useState(false);
   return (
-    <Flex justifyContent="space-evenly">
+    <Flex {...ButtonsWrapperStyle}>
       <Button {...ButtonsStyle} onClick={() => setIsClick(!isClick)}>
         <Icon
           as={LikeIcon}
