@@ -8,9 +8,11 @@ import {
   DescriptionStyle,
   CardIntroStyle,
   TextDefaultStyle,
+  CardAvatarStyle,
 } from "./styles";
 import TimeAgo, { DateInput } from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+
 TimeAgo.addDefaultLocale(en);
 
 const formatTimeAgo = (date: DateInput) => {
@@ -26,25 +28,25 @@ type HeaderProps = {
   text: string;
   date: string;
 };
+
 const Header = ({ avatar, shopName, username, text, date }: HeaderProps) => {
   const timeAgo = formatTimeAgo(new Date(date));
 
   return (
     <Flex {...CardIntroStyle}>
       <Flex {...CardHeaderStyle}>
-        <Image src={avatar} boxSize="40px" rounded="full" objectFit="cover" />
+        <Image src={avatar} {...CardAvatarStyle} />
         <Flex direction="column">
           <Text {...TextDefaultStyle} {...ShopNameStyle}>
             {shopName}
           </Text>
-
           <Text
             {...TextDefaultStyle}
             {...LinkStyle}
-            color={colors.defaultColor}
+            color={colors.navDefault}
             href="#x"
           >
-            <Link color="#0A66C2">{username}</Link> • {timeAgo}
+            <Link color={colors.lightBlue}>{username}</Link> • {timeAgo}
           </Text>
         </Flex>
       </Flex>
