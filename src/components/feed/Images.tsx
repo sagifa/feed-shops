@@ -8,7 +8,12 @@ type ImagesProps = {
 };
 
 const imagesToShow = 2;
-const widthMultiImages = 100 / imagesToShow + "%";
+const gap = 8;
+const widthMultiImages =
+  +cardWidth.replace(/[^0-9]/g, "") / imagesToShow -
+  gap * (imagesToShow - 1) +
+  imagesToShow * imagesToShow +
+  "px";
 
 const Images = ({ images }: ImagesProps) => {
   if (images.length === 1)
@@ -19,7 +24,7 @@ const Images = ({ images }: ImagesProps) => {
     );
 
   return (
-    <Flex {...ImagesWrapperStyle} gap="8px">
+    <Flex {...ImagesWrapperStyle} gap={gap + "px"}>
       {images.slice(0, imagesToShow).map((image, index) => (
         <Image key={index} src={image} objectFit="fill" w={widthMultiImages} />
       ))}
