@@ -60,7 +60,7 @@ const Header = ({
           <Image src={avatar} {...CardAvatarStyle} />
           <Flex direction="column">
             <Text {...TextDefaultStyle} {...ShopNameStyle}>
-              {shopName}
+              {username}
             </Text>
             <Text
               {...TextDefaultStyle}
@@ -68,7 +68,7 @@ const Header = ({
               color={colors.navDefault}
               href="#x"
             >
-              <Link color={colors.lightBlue}>{username}</Link> • {timeAgo}
+              <Link color={colors.lightBlue}>{shopName}</Link> • {timeAgo}
             </Text>
           </Flex>
         </Flex>
