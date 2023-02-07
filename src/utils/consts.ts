@@ -28,10 +28,10 @@ export const texts = {
   logout: "Logout",
 };
 
-export const cardWidth = "1120px";
-
 export const appWidth = "1440px";
 
 export const loadPerScroll = 6;
 
 export const urlApi = "https://dev.tedooo.com/feed.json";
+
+export const imagesToShow = 2;

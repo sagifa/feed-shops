@@ -1,13 +1,11 @@
 import React from "react";
 import { Flex, Image } from "@chakra-ui/react";
 import { ImagesWrapperStyle } from "./styles";
-import { cardWidth } from "../../utils/consts";
+import { imagesToShow } from "../../utils/consts";
 
 type ImagesProps = {
   images: string[];
 };
-
-const imagesToShow = 2;
 
 const Images = ({ images }: ImagesProps) => {
   if (images.length === 1)

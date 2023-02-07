@@ -4,10 +4,10 @@ import {
   ImageProps,
   TextProps,
 } from "@chakra-ui/react";
-import { cardWidth, colors } from "../../utils/consts";
+import { colors } from "../../utils/consts";
 
 export const CardWrapperStyle: FlexProps = {
-  w: cardWidth,
+  w: "1120px",
   gap: "16px",
   paddingTop: "24px",
   bgColor: "white",
@@ -55,7 +55,6 @@ export const DescriptionStyle: TextProps = {
 };
 
 export const ImagesWrapperStyle: FlexProps = {
-  w: cardWidth,
   height: "517px",
   bgColor: "#B8C248",
   justifyContent: "center",
