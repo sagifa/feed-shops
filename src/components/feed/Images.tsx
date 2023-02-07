@@ -18,8 +18,8 @@ const Images = ({ images }: ImagesProps) => {
   return (
     <Flex {...ImagesWrapperStyle} gap="8px">
       {images.slice(0, imagesToShow).map((image, index) => (
-        <Flex>
-          <Image key={index} src={image} objectFit="cover" w="full" />
+        <Flex key={index}>
+          <Image src={image} objectFit="cover" w="full" />
         </Flex>
       ))}
     </Flex>
